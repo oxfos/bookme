@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="header">
+        <span class="logo">Bookmarks</span>
+        {% if request.user.is_authenticated %}
+        <ul class="menu">
+            <li {% if section == 'dashboard' %} class="selected" {% endif %}>
+                <a href="{% url 'dashboard' %}">My dashboard</a>
+            </li>
+            <li {% if section == "images" %} class="selected" {% endif %}>
+                <a href="{% url 'images:list' %}">Images</a>
+            </li>
+            <li {% if section == 'people' %} class="selected" {% endif %}>
+                <a href="{% url 'user_list' %}">People</a>
+            </li>
+        </ul>
+        {% endif %}
+        <span class="user">
+            {% if request.user.is_authenticated %}
+            Hello {{ request.user.first_name }},
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}">Log-in</a>
+            {% endif %}
+        </span>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- we load the jquery library from Google -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- we load a simple, lightweight JavaScript API for handling browser cookies -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script> 
+    <script>
+        var csrftoken = Cookies.get('csrftoken');
+        function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        // Before each AJAX request is performed, we check whether the request method is safe and the current request is not cross-domain.
+        // If the request is unsafe, we set the X-CSRFToken header with the value obtained from the cookie.
+        // This setup will apply to all AJAX requests performed with jQuery.
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            {% block domready %}
+            {% endblock %}
+        });
+    </script>
+</body>
+
+</html>
