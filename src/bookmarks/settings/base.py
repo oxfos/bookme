@@ -14,19 +14,11 @@ import os
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'oj^$)h0jg*y8zf*@t_#97#q)83_+f4l0%237)%jc@9-)otuj#c'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1', '6d57e24c.ngrok.io']
 
 
 # Application definition
@@ -141,18 +133,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-# EMAILS
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # emails to console
-
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'userofsendgrid'
-EMAIL_HOST_PASSWORD = 'Qeu2ptcdpt'
-EMAIL_PORT = 587
-EMAIL_USE_TSL = True
-
-
 # CUSTOM AUTHENTICATION BACKEND
 
 AUTHENTICATION_BACKENDS = [
@@ -164,18 +144,14 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-# SOCIAL AUTH
-
-SOCIAL_AUTH_FACEBOOK_KEY = '200453260844965' # Facebook app ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'f878efe72145aa9c06488e70a0701692' # Facebook app secret
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '591753622218-ibl354iavok4g03gtas6ci8bierfsfk1.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'ZNuZ0pFBN4uGRSeZpQBz0Y3M'
-
-SOCIAL_AUTH_TWITTER_KEY = 'KwgKxfDISJdBjt5t2YZyk6pSk'
-SOCIAL_AUTH_TWITTER_SECRET = 'znwmZopDeFrRoncNXX478xbeGeBboLOb3p9NQPTEw0qlwVaAZZ'
-
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
 }
+
+
+# LOADING LOCAL_SETTINGS
+try:
+    from .local_settings import *
+except ImportError:
+    pass
