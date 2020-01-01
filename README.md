@@ -5,7 +5,7 @@ The project is the second of the book and starts at location 2073 (Amazon Kindle
 
 The project lives in a virtual environment created with pipenv.
 
-20/12/2019
+20/12/2019<br>
 I installed Django v3 and dependencies broke:
  File "/home/oxfos/.local/share/virtualenvs/bookme-qKby5H8D/lib/python3.6/site-packages/sorl/thumbnail/models.py", line 2, in <module>
     from django.utils.encoding import python_2_unicode_compatible
