@@ -27,6 +27,7 @@ class Image(models.Model):
     Would it not be possible to directly slugify the title and assign it to slug above?
     """
     users_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='images_liked', blank=True)
+    total_likes = models.PositiveIntegerField(db_index=True, default=0)
 
     def get_absolute_url(self):
         return reverse('images:detail', args=[self.id, self.slug])
