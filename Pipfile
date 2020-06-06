@@ -8,7 +8,7 @@ pillow = "*"
 social-auth-app-django = "*"
 gunicorn = "*"
 sorl-thumbnail = "*"
-django = "==2.2.10"
+django = "==2.2.13"
 
 [dev-packages]
 
