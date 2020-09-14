@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+ALLOWED_HOSTS = ['imarks.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -153,6 +154,11 @@ ABSOLUTE_URL_OVERRIDES = {
 
 # Heroku settings.
 django_heroku.settings(locals())
+
+if os.environ.get('DEBUG') == 'TRUE':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'FALSE':
+    DEBUG = False
 
 # LOADING LOCAL_SETTINGS
 try:
