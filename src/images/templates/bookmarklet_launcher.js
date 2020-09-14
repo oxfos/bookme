@@ -1,8 +1,8 @@
 (function(){
     if (window.bookmarklet !== undefined){
-        myBookmarklet();
+        bookmarklet();
     }
     else {
-        document.body.appendChild(document.createElement('script')).src='http://127.0.0.1:8000/static/js/bookmarklet.js?r='+Math.floor(Math.random()*99999999999999999999);
+        document.body.appendChild(document.createElement('script')).src='https://imarks.herokuapp.com/static/js/bookmarklet.js?r='+Math.floor(Math.random()*99999999999999999999);
     }
 })();
