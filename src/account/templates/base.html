@@ -1,4 +1,5 @@
-{% load staticfiles %}
+{% load static %}
+    
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +10,7 @@
 
 <body>
     <div id="header">
-        <span class="logo">Bookmarks</span>
+        <a href="{% url 'images:home' %}" class="logo">Imarks</a>
         {% if request.user.is_authenticated %}
         <ul class="menu">
             <li {% if section == 'dashboard' %} class="selected" {% endif %}>
@@ -28,6 +29,8 @@
             Hello {{ request.user.first_name }},
             <a href="{% url 'logout' %}">Logout</a>
             {% else %}
+            <a href="{% url 'register' %}">Register</a>
+            &nbsp
             <a href="{% url 'login' %}">Log-in</a>
             {% endif %}
         </span>
@@ -46,9 +49,9 @@
         {% block content %}
         {% endblock %}
     </div>
-    <!-- we load the jquery library from Google -->
+    <!-- jquery library from Google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- we load a simple, lightweight JavaScript API for handling browser cookies -->
+    <!-- simple, lightweight JavaScript API for handling browser cookies -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script> 
     <script>
         var csrftoken = Cookies.get('csrftoken');

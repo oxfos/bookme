@@ -10,6 +10,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from actions.utils import create_action
 
 
+
+def image_home(request):
+    # Landing page.
+    return render(request, 'images/image/index.html')
+
 @login_required
 def image_create(request):
     if request.method == 'POST':
