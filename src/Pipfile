@@ -9,6 +9,8 @@ social-auth-app-django = "*"
 gunicorn = "*"
 sorl-thumbnail = "*"
 django = "*"
+django-heroku = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
