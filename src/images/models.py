@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 from django.urls import reverse
+from bookmarks.storage_backends import MediaStorage
 
 
 class Image(models.Model):
@@ -9,7 +10,7 @@ class Image(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
     url = models.URLField()
-    image = models.ImageField(upload_to='images/%Y/%m/%d/')
+    image = models.ImageField(storage=MediaStorage())
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True, db_index=True)
 
