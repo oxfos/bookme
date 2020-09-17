@@ -1,6 +1,6 @@
 (function(){
     var jquery_version = '3.5.1';
-    var site_url = 'https://imarks.herokuapp.com/';
+    var site_url = 'https://imarksbucket.s3.amazonaws.com/';
     var static_url = site_url + 'static/';
     var min_width = 100;
     var min_height = 100;
