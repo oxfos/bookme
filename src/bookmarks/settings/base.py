@@ -153,8 +153,8 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
 }
 
-# Heroku settings.
-django_heroku.settings(locals(), staticfiles=False)
+# Django-heroku settings.
+# django_heroku.settings(locals(), staticfiles=False)
 
 if os.environ.get('DEBUG') == 'TRUE':
     DEBUG = True
