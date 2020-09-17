@@ -27,7 +27,8 @@ class ImageCreateForm(forms.ModelForm):
         image_name = '{}.{}'.format(slugify(image.title), image_url.rsplit('.',1)[1].lower())
 
         # download image from the given URL
-        response = request.urlopen(image_url)
+        response1 = request.Request(image_url, headers={'User-Agent': 'Mozilla/5.0'})
+        response = request.urlopen(response1)
         image.image.save(image_name, ContentFile(response.read()), save=False)
         if commit:
             image.save()
