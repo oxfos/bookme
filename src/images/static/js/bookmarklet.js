@@ -38,7 +38,7 @@
             // hide bookmarklet
             jQuery("#bookmarklet").hide();
             // open window to submit the image
-            window.open(site_url + 'images/create/?url='
+            window.open('https://imarks.herokuapp.com/images/create/?url='
             + encodeURIComponent(selected_image)
             + '&title='
             + encodeURIComponent(jQuery('title').text()),
