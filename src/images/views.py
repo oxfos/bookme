@@ -20,6 +20,7 @@ def image_create(request):
     if request.method == 'POST':
         # form is sent
         form = ImageCreateForm(data=request.POST)
+        print('form is bound')
         if form.is_valid():
             # form data is valid
             cd = form.cleaned_data
