@@ -27,7 +27,9 @@ def image_create(request):
 
             # assign current user to the item
             new_item.user = request.user
+            print('until here')
             new_item.save()
+            print('here is after save')
             create_action(request.user, 'bookmarked image', new_item)
             messages.success(request, 'Image added successfully')
 
