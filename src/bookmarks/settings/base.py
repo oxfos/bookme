@@ -154,7 +154,7 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 # Heroku settings.
-django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
 
 if os.environ.get('DEBUG') == 'TRUE':
     DEBUG = True
