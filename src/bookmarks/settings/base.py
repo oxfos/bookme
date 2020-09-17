@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Third parties:
     'social_django',
     'sorl.thumbnail',
+    'storages',
 ]
 
 MIDDLEWARE = [
