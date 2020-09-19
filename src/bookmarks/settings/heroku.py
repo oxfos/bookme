@@ -23,14 +23,6 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME", "imarksbucket") # set
 S3DIRECT_REGION = 'eu-central-1'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-# SORL-THUMBNAIL SPECIFIC << THIS DID NOT HELP
-"""
-MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + 'media/'
-MEDIA_ROOT = MEDIA_URL
-STATIC_URL = AWS_S3_CUSTOM_DOMAIN + 'static/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-"""
-
 # BROWSER SETTINGS
 
 # Set these to True to avoid transmitting the CSRF cookie over HTTP accidentally.
