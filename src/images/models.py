@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 from django.urls import reverse
-from bookmarks.storage_backends import MediaStorage
 
 
 class Image(models.Model):
