@@ -20,7 +20,6 @@ def image_create(request):
     if request.method == 'POST':
         # form is sent
         form = ImageCreateForm(data=request.POST)
-        print('form is bound')
         if form.is_valid():
             # form data is valid
             cd = form.cleaned_data
@@ -28,9 +27,7 @@ def image_create(request):
 
             # assign current user to the item
             new_item.user = request.user
-            print('until here')
             new_item.save()
-            print('here is after save')
             create_action(request.user, 'bookmarked image', new_item)
             messages.success(request, 'Image added successfully')
 
