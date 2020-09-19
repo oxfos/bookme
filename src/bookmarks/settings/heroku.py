@@ -21,7 +21,7 @@ AWS_ACCESS_KEY_ID =  os.environ.get("AWS_ACCESS_KEY_ID", "") # set in heroku env
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "") # set in heroku env variables
 AWS_STORAGE_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME", "imarksbucket") # set in heroku as env variable
 S3DIRECT_REGION = 'eu-central-1'
-AWS_S3_CUSTOM_DOMAIN = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # SORL-THUMBNAIL SPECIFIC
 MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + 'media/'
