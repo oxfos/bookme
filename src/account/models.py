@@ -13,6 +13,7 @@ class Profile(models.Model):
 
 
 class Contact(models.Model):
+    """ Intermediate 'through' table model containing the 'Follow' relationship between two users. """
     user_from = models.ForeignKey('auth.User', related_name='rel_from_set', on_delete=models.CASCADE)
     user_to = models.ForeignKey('auth.User', related_name='rel_to_set', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, db_index=True)
@@ -24,7 +25,8 @@ class Contact(models.Model):
         return '{} follows {}'.format(self.user_form, self.user_to)
 
 
-# Add following field to User dynamically
+# The 'following' field is added to User dynamically.
+# It makes use of the intermediate 'through' table model Contact.
 User.add_to_class(
     'following',
     models.ManyToManyField('self', through=Contact, related_name='followers', symmetrical=False)
