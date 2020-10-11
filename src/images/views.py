@@ -1,4 +1,3 @@
-import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -9,13 +8,8 @@ from django.views.decorators.http import require_POST
 from bookmarks.common.decorators import ajax_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from actions.utils import create_action
-import redis
 from django.conf import settings
 
-# connect to redis
-
-r = redis.from_url(os.environ.get("REDIS_URL"))
-#r = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
 
 def image_home(request):
     # Landing page.
@@ -50,7 +44,7 @@ def image_create(request):
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
     # increment total image views by 1
-    total_views = r.incr(f'image:{image.id}:views')
+    total_views = settings.R.incr(f'image:{image.id}:views')
     return render(request, 'images/image/detail.html', {'section': 'images', \
         'image': image, 'total_views': total_views})
 

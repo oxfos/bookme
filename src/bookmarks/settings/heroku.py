@@ -1,4 +1,6 @@
 from .base import *
+import redis
+
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
@@ -31,3 +33,8 @@ SESSION_COOKIE_SECURE = True # False in development, True in production
 
 # I SET THIS TO TRUE FOR WHEN EXTERNAL USERS TEST GRIT ALPHA:
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# REDIS
+
+R = redis.from_url(os.environ.get("REDIS_URL"))
+
