@@ -31,12 +31,3 @@ SESSION_COOKIE_SECURE = True # False in development, True in production
 
 # I SET THIS TO TRUE FOR WHEN EXTERNAL USERS TEST GRIT ALPHA:
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-# REDIS
-
-CACHES = {
-    "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": os.environ.get('REDIS_URL'),
-    }
-}
