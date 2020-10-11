@@ -156,11 +156,6 @@ ABSOLUTE_URL_OVERRIDES = {
 # Django-heroku settings.
 # django_heroku.settings(locals(), staticfiles=False)
 
-# REDIS SETTINGS
-
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-REDIS_DB = 0
 
 # DEBUG SETTINGS
 
