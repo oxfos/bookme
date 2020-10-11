@@ -97,3 +97,4 @@ def image_list(request):
     return render(request,
                   'images/image/list.html',
                    {'section': 'images', 'images': images})
+
