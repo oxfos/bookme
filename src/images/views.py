@@ -41,15 +41,16 @@ def image_create(request):
         # build form with data provided by the bookmarklet via GET
         form = ImageCreateForm(data=request.GET)
 
-    return render(request, 'images/image/create.html', {'section':'images', 'form':form})
+    return render(request, 'images/image/create.html', {'section':'images',\
+         'form':form})
 
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
     # increment total image views by 1
-    # total_views = r.incr(f'image:{image.id}:views')
-    return render(request, 'images/image/detail.html', {'section': 'images',
-         'image': image})
+    total_views = r.incr(f'image:{image.id}:views')
+    return render(request, 'images/image/detail.html', {'section': 'images', \
+        'image': image, 'total_views': total_views})
 
 
 @ajax_required
